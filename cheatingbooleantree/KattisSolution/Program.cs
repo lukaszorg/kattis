@@ -16,11 +16,6 @@ namespace KattisSolution
         public bool LeafValue;
         public bool Changable;
         public Gate Type;
-
-        public Node Clone()
-        {
-            return new Node(){Changable = Changable, LeafValue = LeafValue, Type = Type};
-        }
     }
 
     public class NodeRef
@@ -40,25 +35,16 @@ namespace KattisSolution
             NodeList = nodeList;
         }
 
-        public NodeRef Parent()
-        {
-            var newIndex = (Index - 1) / 2;
-            return newIndex < 0 ? null : new NodeRef(newIndex, NodeList);
-            //new  node
-        }
-
         public NodeRef LeftChild()
         {
             var newIndex = 1 + 2 * Index;
             return newIndex < NodeList.Length ?  new NodeRef(newIndex, NodeList) : null ;
-            //new  node
         }
 
         public NodeRef RightChild()
         {
             var newIndex = 2 + 2 * Index;
             return newIndex < NodeList.Length ?  new NodeRef(newIndex, NodeList) : null;
-            //new  node
         }
 
         public bool Eval()
@@ -165,9 +151,6 @@ namespace KattisSolution
         public static void Solve(Stream stdin, Stream stdout)
         {
             IScanner scanner = new OptimizedPositiveIntReader(stdin);
-            // uncomment when you need more advanced reader
-            // IScanner scanner = new Scanner(stdin);
-            // IScanner scanner = new LineReader(stdin);
             var writer = new BufferedStdoutWriter(stdout);
 
             var n = scanner.NextInt();
