@@ -1,0 +1,1 @@
+python kattisSubmit.py -pcarrots KattisSolution\Program.cs KattisSolution\InputOutput.cs -f
